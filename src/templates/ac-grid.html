@@ -1,0 +1,6 @@
+<div class="outer">
+  <div class="vis-hidden" ng-repeat="row in ::options | chunkBy : perRow">
+    <input id="{{'cell-' + $id}}" ng-model="selections[cell.value]" type="checkbox" ng-repeat-start="cell in row">
+    <label for="{{'cell-' + $id }}" ng-repeat-end>{{ cell.label }}</label>
+  </div>
+</div>

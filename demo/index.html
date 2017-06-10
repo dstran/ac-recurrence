@@ -1,0 +1,21 @@
+<html ng-app="demo">
+  <head>
+    <title>acRecurrence Demo</title>
+    <link rel="stylesheet" type="text/css" href="../dist/ac-recurrence.css">
+  </head>
+  <body>
+    <input type="text" ng-model="$scope.event" ng-model-options="{updateOn: 'blur'}" style="width: 800px"></input>
+    <ac-recurrence ng-model="$scope.event"></ac-recurrence>
+    <input type="radio" value="FREQ=YEARLY;INTERVAL=1;BYMONTH=5" ng-model="$scope.event"><label>FREQ=YEARLY;INTERVAL=1;BYMONTH=5</label><br>
+    <input type="radio" value="FREQ=YEARLY;INTERVAL=1;BYMONTH=6;BYMONTHDAY=1" ng-model="$scope.event"><label>FREQ=YEARLY;INTERVAL=1;BYMONTH=6;BYMONTHDAY=1</label><br>
+    <input type="radio" value="FREQ=YEARLY;INTERVAL=1;BYMONTH=3;BYDAY=+1SU" ng-model="$scope.event"><label>FREQ=YEARLY;INTERVAL=1;BYMONTH=3;BYDAY=+1SU</label><br>
+    <input type="radio" value="FREQ=MONTHLY;INTERVAL=3;BYSETPOS=1;BYDAY=SA,SU" ng-model="$scope.event"><label>FREQ=MONTHLY;INTERVAL=3;BYSETPOS=1;BYDAY=SA,SU</label><br>
+    <input type="radio" value="FREQ=WEEKLY;INTERVAL=1" ng-model="$scope.event"><label>FREQ=WEEKLY;INTERVAL=1</label><br>
+    <input type="radio" value="FREQ=WEEKLY;BYDAY=MO" ng-model="$scope.event"><label>FREQ=WEEKLY;BYDAY=MO</label>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-filter/dist/angular-filter.js"></script>
+    <script src="../bower_components/rrule/lib/rrule.js"></script>
+    <script src="../dist/ac-recurrence.js"></script>
+    <script src="demo.js"></script>
+  </body>
+</html>

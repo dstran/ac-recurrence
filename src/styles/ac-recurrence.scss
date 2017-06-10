@@ -1,0 +1,33 @@
+.outer {
+  display: table;
+  border-collapse: collapse;
+
+  .vis-hidden {
+    display: table-row;
+
+    input[type=checkbox] {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    label {
+      display: table-cell;
+      margin: 10px;
+      padding: 5px;
+      width: 1.4em;
+      text-align: center;
+      background-color: #ccc;
+    }
+
+    input:checked + label {
+      background-color: #999;
+    }
+  }
+}
+

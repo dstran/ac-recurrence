@@ -1,0 +1,49 @@
+<div ng-form>
+  <fieldset>
+    <label>Frequency</label>
+    <select ng-model="vm.properties.frequency" ng-change="vm.setFrequency()">
+      <option value="3">daily</option>
+      <option value="2">weekly</option>
+      <option value="1">monthly</option>
+      <option value="0">yearly</option>
+    </select>
+
+    <div>
+      <label>Every</label>
+      <input type="number" ng-model="vm.properties.interval" min="1"></input>
+      <label>{{ vm.word }}<ng-pluralize count="vm.properties.interval" when="{ 1: '', other: 's'}"></ng-pluralize>{{ vm.preposition }}</label>
+    </div>
+
+    <ac-grid ng-if="vm.properties.frequency === '2'" ng-model="vm.properties.byWeekDay" options="vm.days" per-row="7"></ac-grid>
+    <ac-grid ng-if="vm.properties.frequency === '0'" ng-model="vm.properties.byMonth" options="vm.months" per-row="3"></ac-grid>
+
+    <div ng-if="['1', '0'].includes(vm.properties.frequency)">
+      <input ng-model="vm.properties.type" value="day" type="radio">
+      <label>on the</label>
+      <input type="number" ng-model="vm.properties.monthDay" min="1" max="31"><ng-pluralize count="vm.properties.monthDay" when="{ 1: 'st', 2: 'nd', 3: 'rd', 21: 'st', 22: 'nd', 23: 'rd', 31: 'st', other: 'th'}"></ng-pluralize>
+    </div>
+    <div ng-if="['1', '0'].includes(vm.properties.frequency)">
+      <input ng-model="vm.properties.type" value="offset" type="radio">
+      <label>on the</label>
+      <select ng-model="vm.properties.offset">
+        <option ng-value="1">first</option>
+        <option value="2">second</option>
+        <option value="3">third</option>
+        <option value="4">fourth</option>
+        <option value="5">fifth</option>
+        <option value="-1">last</option>
+      </select>
+      <select ng-model="vm.properties.offsetPeriod">
+        <option ng-value="6">Sunday</option>
+        <option ng-value="0">Monday</option>
+        <option ng-value="1">Tuesday</option>
+        <option ng-value="2">Wednesday</option>
+        <option ng-value="3">Thursday</option>
+        <option ng-value="4">Friday</option>
+        <option ng-value="5">Saturday</option>
+        <option value="wkday">weekday</option>
+        <option value="wkend">weekend day</option>
+      </select>
+    </div>
+  </fieldset>
+</div>

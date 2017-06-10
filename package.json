@@ -1,0 +1,42 @@
+{
+  "name": "ac-recurrence",
+  "version": "0.1.0",
+  "description": "AngularJS selector for recurring events",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git@github.com/alexander-clark/ac-recurrence.git"
+  },
+  "keywords": [
+    "angularjs",
+    "rrule",
+    "recurrence",
+    "frequency"
+  ],
+  "author": "Alexander Clark",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexander-clark/ac-recurrence/issues"
+  },
+  "homepage": "https://github.com/alexander-clark/ac-recurrence#readme",
+  "dependencies": {
+    "angular-filter": "^0.5.15",
+    "rrule": "^2.2.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rm": "^1.0.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.1.0",
+    "karma": "^0.13.22",
+    "karma-jasmine": "^0.3.8",
+    "karma-phantomjs-launcher": "^1.0.0"
+  }
+}

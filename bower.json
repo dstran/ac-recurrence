@@ -1,0 +1,29 @@
+{
+  "name": "ac-recurrence",
+  "description": "AngularJS selector for recurring events",
+  "main": [
+    "dist/ac-recurrence.js",
+    "dist/ac-recurrence.sass"
+  ],
+  "authors": [
+    "Alexander Clark"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/alexander-clark/ac-recurrence",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "demo",
+    "gulpfile.js",
+    "node_modules",
+    "src",
+    "test"
+  ],
+  "devDependencies": {
+    "angular-mocks": "^1.6.4"
+  },
+  "dependencies": {
+    "angular-filter": "^0.5.15",
+    "rrule": "^2.2.0"
+  }
+}
