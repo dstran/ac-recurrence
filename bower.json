@@ -1,5 +1,6 @@
 {
   "name": "ac-recurrence",
+  "version": "0.1.0",
   "description": "AngularJS selector for recurring events",
   "main": [
     "dist/ac-recurrence.js",
@@ -9,6 +10,7 @@
     "Alexander Clark"
   ],
   "license": "MIT",
+  "private": false,
   "homepage": "https://github.com/alexander-clark/ac-recurrence",
   "ignore": [
     "**/.*",
