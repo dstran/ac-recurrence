@@ -1,10 +1,10 @@
 {
   "name": "ac-recurrence",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AngularJS selector for recurring events",
   "main": [
     "dist/ac-recurrence.js",
-    "dist/ac-recurrence.sass"
+    "dist/ac-recurrence.css"
   ],
   "authors": [
     "Alexander Clark"

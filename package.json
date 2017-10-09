@@ -1,8 +1,9 @@
 {
   "name": "ac-recurrence",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "AngularJS selector for recurring events",
-  "main": "index.js",
+  "main": "dist/ac-recurrence.js",
+  "style": "dist/ac-recurrence.css",
   "scripts": {
     "test": "karma start"
   },
