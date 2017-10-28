@@ -197,6 +197,7 @@ $templateCache.put('ac-recurrence.html','<div ng-form>\n  <fieldset>\n    <label
       link: recurrenceLink,
       restrict: 'E',
       require: 'ngModel',
+      scope: {},
       templateUrl: 'ac-recurrence.html'
     };
 
