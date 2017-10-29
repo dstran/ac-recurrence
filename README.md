@@ -38,15 +38,10 @@ See demo app.
 
 ## Development
 
-Install Gulp via npm if you don't have it
-```shell
-npm install -g gulp
-```
-
 ### Available Commands
 
-* `gulp connect`: build the project and run a dev server
-* `gulp build`: build the project
+* `npm start`: build the project and run a dev server
+* `npm run build`: build the project
 * `npm test`: run tests
 
 ## License
