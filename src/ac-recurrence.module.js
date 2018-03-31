@@ -1,5 +1,5 @@
 ;(function() {
   'use strict';
 
-  angular.module('ac-recurrence', ['angular.filter']);
+  angular.module('ac-recurrence', ['ac-grid', 'angular.filter']);
 })();

@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/alexander-clark/ac-recurrence#readme",
   "dependencies": {
+    "ac-grid": "^0.1.1",
     "angular-filter": "^0.5.15",
     "rrule": "^2.2.0"
   },
