@@ -61,25 +61,22 @@ var acRecurrence =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-module.exports = angular;
-
-/***/ }),
-/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_styles_ac_recurrence_scss__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_styles_ac_recurrence_scss__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_styles_ac_recurrence_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__src_styles_ac_recurrence_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular_filter__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular_filter__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular_filter__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ac_grid__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ac_grid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ac_grid__);
+
 
 
 
@@ -88,24 +85,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__(4);
 __webpack_require__(5);
 __webpack_require__(6);
-__webpack_require__(7);
 __webpack_require__(8);
 __webpack_require__(9);
 __webpack_require__(10);
-__webpack_require__(11);
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports) {
 
 module.exports = angular.filter;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+!function(e){var n={};function t(r){if(n[r])return n[r].exports;var o=n[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,t),o.l=!0,o.exports}t.m=e,t.c=n,t.d=function(e,n,r){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:r})},t.r=function(e){Object.defineProperty(e,"__esModule",{value:!0})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},t.p="",t(t.s=5)}([function(e,n){e.exports=angular},function(e,n,t){var r="/ac-grid.html";t(0).module("ac-grid").run(["$templateCache",function(e){e.put(r,'<div class="outer">\n  <div class="vis-hidden" ng-repeat="row in ::options | chunkBy : perRow">\n    <input id="{{\'cell-\' + $id}}" ng-model="selections[cell.value]" type="checkbox" ng-repeat-start="cell in row">\n    <label for="{{\'cell-\' + $id }}" ng-repeat-end>{{ cell.label }}</label>\n  </div>\n</div>\n')}]),e.exports=r},function(e,n,t){"use strict";var r,o=(r=t(1))&&r.__esModule?r:{default:r};function u(){function e(e){var n={};return(e||[]).map(function(e){n[e]=!0}),n}function n(e){var n=[];for(var t in e.selections)!0===e.selections[t]&&n.push(t);return n}return{link:function(t,r,o,u){u.$formatters.push(e),u.$parsers.push(n),u.$render=function(){t.selections=u.$viewValue},t.$watch("selections",function(){var e=t.selections||{};u.$setViewValue({selections:e})},!0)},require:"ngModel",restrict:"E",scope:{ngModel:"=",options:"<",perRow:"<"},templateUrl:o.default}}Object.defineProperty(n,"__esModule",{value:!0}),n.default=u,angular.module("ac-grid").directive("acGrid",u)},function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var r=angular.module("ac-grid",["angular.filter"]);n.default=r},function(e,n){e.exports=angular.filter},function(e,n,t){"use strict";t(10),t(4),t(3),t(2)},,,,,function(e,n){}]);
+//# sourceMappingURL=ac-grid.js.map
 
 /***/ }),
 /* 4 */
@@ -114,7 +116,7 @@ module.exports = angular.filter;
 ;(function() {
   'use strict';
 
-  angular.module('ac-recurrence', ['angular.filter']);
+  angular.module('ac-recurrence', ['ac-grid', 'angular.filter']);
 })();
 
 
@@ -134,21 +136,17 @@ module.exports = angular.filter;
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var path = 'ac-grid.html';
-var html = "<div class=\"outer\">\n  <div class=\"vis-hidden\" ng-repeat=\"row in ::options | chunkBy : perRow\">\n    <input id=\"{{'cell-' + $id}}\" ng-model=\"selections[cell.value]\" type=\"checkbox\" ng-repeat-start=\"cell in row\">\n    <label for=\"{{'cell-' + $id }}\" ng-repeat-end>{{ cell.label }}</label>\n  </div>\n</div>\n";
-var angular = __webpack_require__(0);
+var path = 'ac-recurrence.html';
+var html = "<div ng-form>\n  <fieldset>\n    <label>Frequency</label>\n    <select ng-model=\"vm.properties.frequency\" ng-change=\"vm.setFrequency()\">\n      <option value=\"3\">daily</option>\n      <option value=\"2\">weekly</option>\n      <option value=\"1\">monthly</option>\n      <option value=\"0\">yearly</option>\n    </select>\n\n    <div>\n      <label>Every</label>\n      <input type=\"number\" ng-model=\"vm.properties.interval\" min=\"1\"></input>\n      <label>{{ vm.word }}<ng-pluralize count=\"vm.properties.interval\" when=\"{ 1: '', other: 's'}\"></ng-pluralize>{{ vm.preposition }}</label>\n    </div>\n\n    <ac-grid ng-if=\"vm.properties.frequency === '2'\" ng-model=\"vm.properties.byWeekDay\" options=\"vm.days\" per-row=\"7\"></ac-grid>\n    <ac-grid ng-if=\"vm.properties.frequency === '0'\" ng-model=\"vm.properties.byMonth\" options=\"vm.months\" per-row=\"3\"></ac-grid>\n\n    <div ng-if=\"['1', '0'].includes(vm.properties.frequency)\">\n      <input ng-model=\"vm.properties.type\" value=\"day\" type=\"radio\">\n      <label>on the</label>\n      <input type=\"number\" ng-model=\"vm.properties.monthDay\" min=\"1\" max=\"31\"><ng-pluralize count=\"vm.properties.monthDay\" when=\"{ 1: 'st', 2: 'nd', 3: 'rd', 21: 'st', 22: 'nd', 23: 'rd', 31: 'st', other: 'th'}\"></ng-pluralize>\n    </div>\n    <div ng-if=\"['1', '0'].includes(vm.properties.frequency)\">\n      <input ng-model=\"vm.properties.type\" value=\"offset\" type=\"radio\">\n      <label>on the</label>\n      <select ng-model=\"vm.properties.offset\">\n        <option ng-value=\"1\">first</option>\n        <option value=\"2\">second</option>\n        <option value=\"3\">third</option>\n        <option value=\"4\">fourth</option>\n        <option value=\"5\">fifth</option>\n        <option value=\"-1\">last</option>\n      </select>\n      <select ng-model=\"vm.properties.offsetPeriod\">\n        <option ng-value=\"6\">Sunday</option>\n        <option ng-value=\"0\">Monday</option>\n        <option ng-value=\"1\">Tuesday</option>\n        <option ng-value=\"2\">Wednesday</option>\n        <option ng-value=\"3\">Thursday</option>\n        <option ng-value=\"4\">Friday</option>\n        <option ng-value=\"5\">Saturday</option>\n        <option value=\"wkday\">weekday</option>\n        <option value=\"wkend\">weekend day</option>\n      </select>\n    </div>\n  </fieldset>\n</div>\n";
+var angular = __webpack_require__(7);
 angular.module('ac-recurrence').run(['$templateCache', function(c) { c.put(path, html) }]);
 module.exports = path;
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-var path = 'ac-recurrence.html';
-var html = "<div ng-form>\n  <fieldset>\n    <label>Frequency</label>\n    <select ng-model=\"vm.properties.frequency\" ng-change=\"vm.setFrequency()\">\n      <option value=\"3\">daily</option>\n      <option value=\"2\">weekly</option>\n      <option value=\"1\">monthly</option>\n      <option value=\"0\">yearly</option>\n    </select>\n\n    <div>\n      <label>Every</label>\n      <input type=\"number\" ng-model=\"vm.properties.interval\" min=\"1\"></input>\n      <label>{{ vm.word }}<ng-pluralize count=\"vm.properties.interval\" when=\"{ 1: '', other: 's'}\"></ng-pluralize>{{ vm.preposition }}</label>\n    </div>\n\n    <ac-grid ng-if=\"vm.properties.frequency === '2'\" ng-model=\"vm.properties.byWeekDay\" options=\"vm.days\" per-row=\"7\"></ac-grid>\n    <ac-grid ng-if=\"vm.properties.frequency === '0'\" ng-model=\"vm.properties.byMonth\" options=\"vm.months\" per-row=\"3\"></ac-grid>\n\n    <div ng-if=\"['1', '0'].includes(vm.properties.frequency)\">\n      <input ng-model=\"vm.properties.type\" value=\"day\" type=\"radio\">\n      <label>on the</label>\n      <input type=\"number\" ng-model=\"vm.properties.monthDay\" min=\"1\" max=\"31\"><ng-pluralize count=\"vm.properties.monthDay\" when=\"{ 1: 'st', 2: 'nd', 3: 'rd', 21: 'st', 22: 'nd', 23: 'rd', 31: 'st', other: 'th'}\"></ng-pluralize>\n    </div>\n    <div ng-if=\"['1', '0'].includes(vm.properties.frequency)\">\n      <input ng-model=\"vm.properties.type\" value=\"offset\" type=\"radio\">\n      <label>on the</label>\n      <select ng-model=\"vm.properties.offset\">\n        <option ng-value=\"1\">first</option>\n        <option value=\"2\">second</option>\n        <option value=\"3\">third</option>\n        <option value=\"4\">fourth</option>\n        <option value=\"5\">fifth</option>\n        <option value=\"-1\">last</option>\n      </select>\n      <select ng-model=\"vm.properties.offsetPeriod\">\n        <option ng-value=\"6\">Sunday</option>\n        <option ng-value=\"0\">Monday</option>\n        <option ng-value=\"1\">Tuesday</option>\n        <option ng-value=\"2\">Wednesday</option>\n        <option ng-value=\"3\">Thursday</option>\n        <option ng-value=\"4\">Friday</option>\n        <option ng-value=\"5\">Saturday</option>\n        <option value=\"wkday\">weekday</option>\n        <option value=\"wkend\">weekend day</option>\n      </select>\n    </div>\n  </fieldset>\n</div>\n";
-var angular = __webpack_require__(0);
-angular.module('ac-recurrence').run(['$templateCache', function(c) { c.put(path, html) }]);
-module.exports = path;
+module.exports = angular;
 
 /***/ }),
 /* 8 */
@@ -215,67 +213,6 @@ module.exports = path;
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports) {
-
-;(function() {
-  'use strict';
-
-  function acGrid() {
-    return {
-      link: function(scope, iElement, iAttrs, ngModelCtrl) {
-        ngModelCtrl.$formatters.push(formatter);
-
-        ngModelCtrl.$parsers.push(parser);
-
-        ngModelCtrl.$render = function() {
-          scope.selections = ngModelCtrl.$viewValue;
-        };
-
-        scope.$watch('selections', function() {
-          var selections = scope.selections || {};
-          ngModelCtrl.$setViewValue({ selections: selections });
-        }, true);
-      },
-      require: 'ngModel',
-      restrict: 'E',
-      scope: {
-        ngModel: '=',
-        options: '<',
-        perRow: '<'
-      },
-      templateUrl: 'ac-grid.html',
-    };
-
-    function formatter(modelValue) {
-      var value = modelValue || [];
-      var selections = {};
-
-      value.map(function(number) {
-        selections[number] = true;
-      });
-
-      return selections;
-    }
-
-    function parser(viewValue) {
-      var output = [];
-
-      for (var k in viewValue.selections) {
-        if (viewValue.selections[k] === true) {
-          output.push(k);
-        }
-      }
-
-      return output;
-    }
-  }
-
-  angular.module('ac-recurrence').directive('acGrid', acGrid);
-})();
-
-
-/***/ }),
-/* 10 */
 /***/ (function(module, exports) {
 
 ;(function() {
@@ -360,7 +297,7 @@ module.exports = path;
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports) {
 
 ;(function() {
