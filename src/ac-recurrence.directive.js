@@ -74,7 +74,9 @@
 
   function acRecurrence() {
     var directive = {
-      controller: 'acRecurrenceController as vm',
+      bindToController: true,
+      controller: 'acRecurrenceController',
+      controllerAs: 'vm',
       link: recurrenceLink,
       restrict: 'E',
       require: 'ngModel',
