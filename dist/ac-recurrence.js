@@ -121,7 +121,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 (function() {
   'use strict';
 
-  angular.module('ac-recurrence', ['ac-grid', 'rrule', 'angular.filter']);
+  angular.module('ac-recurrence', ['ac-grid', 'angular.filter']);
 })();
 
 
