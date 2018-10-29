@@ -1,4 +1,3 @@
-import 'rrule';
 (function() {
   'use strict';
 
