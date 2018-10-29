@@ -1,4 +1,4 @@
-;(function() {
+(function() {
   'use strict';
 
   function acRecurrenceController(localNames, $filter, RRule) {
@@ -40,8 +40,15 @@
         vm.preposition = '';
       }
 
-      if (friendly[vm.properties.frequency] === 'WEEKLY' || friendly[vm.properties.frequency] === 'DAILY') {
+      if (
+        friendly[vm.properties.frequency] === 'WEEKLY' ||
+        friendly[vm.properties.frequency] === 'DAILY'
+      ) {
         vm.properties.type = '';
+      }
+
+      if (vm.onFrequencyChange) {
+        vm.onFrequencyChange(friendly[vm.properties.frequency]);
       }
     }
 
@@ -54,7 +61,10 @@
       var bySetPos = null;
       var monthDay = null;
       var byMonth = null;
-      if (friendly[vm.properties.frequency] === 'YEARLY' || friendly[vm.properties.frequency] === 'MONTHLY') {
+      if (
+        friendly[vm.properties.frequency] === 'YEARLY' ||
+        friendly[vm.properties.frequency] === 'MONTHLY'
+      ) {
         if (vm.properties.type === 'offset') {
           if (vm.properties.offsetPeriod === 'wkday') {
             byWeekDay.push(RRule['MO']);
@@ -68,7 +78,11 @@
             byWeekDay.push(RRule['SU']);
             bySetPos = parseInt(vm.properties.offset);
           } else {
-            byWeekDay.push(RRule[unfriendly[vm.properties.offsetPeriod]].nth(vm.properties.offset))
+            byWeekDay.push(
+              RRule[unfriendly[vm.properties.offsetPeriod]].nth(
+                vm.properties.offset
+              )
+            );
           }
         } else {
           monthDay = vm.properties.monthDay;
@@ -91,5 +105,7 @@
   }
 
   acRecurrenceController.$inject = ['localNames', '$filter', 'RRule'];
-  angular.module('ac-recurrence').controller('acRecurrenceController', acRecurrenceController);
+  angular
+    .module('ac-recurrence')
+    .controller('acRecurrenceController', acRecurrenceController);
 })();

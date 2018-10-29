@@ -1,4 +1,4 @@
-;(function() {
+(function() {
   'use strict';
 
   function recurrenceLink(scope, iElement, iAttrs, ngModelCtrl) {
@@ -7,7 +7,7 @@
       var rrule;
       try {
         rrule = new RRule(RRule.parseString(modelValue));
-      } catch(e) {
+      } catch (e) {
         console.log(e);
         rrule = new RRule();
       }
@@ -21,16 +21,22 @@
 
     ngModelCtrl.$render = function() {
       if (ngModelCtrl.$viewValue.origOptions.bymonth) {
-        scope.vm.properties.byMonth = [ngModelCtrl.$viewValue.origOptions.bymonth];
+        scope.vm.properties.byMonth = [
+          ngModelCtrl.$viewValue.origOptions.bymonth
+        ];
       }
       if (ngModelCtrl.$viewValue.origOptions.bymonthday) {
-        scope.vm.properties.monthDay = ngModelCtrl.$viewValue.origOptions.bymonthday;
+        scope.vm.properties.monthDay =
+          ngModelCtrl.$viewValue.origOptions.bymonthday;
       } else {
         scope.vm.properties.monthDay = null;
       }
-      scope.vm.properties.frequency = String(ngModelCtrl.$viewValue.origOptions.freq || 0);
+      scope.vm.properties.frequency = String(
+        ngModelCtrl.$viewValue.origOptions.freq || 0
+      );
       scope.vm.setFrequency();
-      scope.vm.properties.interval = ngModelCtrl.$viewValue.origOptions.interval || null;
+      scope.vm.properties.interval =
+        ngModelCtrl.$viewValue.origOptions.interval || null;
       var byWeekDay = ngModelCtrl.$viewValue.origOptions.byweekday || [];
       if (byWeekDay[0] && byWeekDay[0].n) {
         scope.vm.properties.type = 'offset';
@@ -45,22 +51,26 @@
         });
         if (ngModelCtrl.$viewValue.origOptions.bysetpos) {
           scope.vm.properties.type = 'offset';
-          scope.vm.properties.offset = ngModelCtrl.$viewValue.origOptions.bysetpos;
+          scope.vm.properties.offset =
+            ngModelCtrl.$viewValue.origOptions.bysetpos;
           if (angular.equals(scope.vm.properties.byWeekDay, [5, 6])) {
             scope.vm.properties.offsetPeriod = 'wkend';
           } else {
             scope.vm.properties.offsetPeriod = 'wkday';
           }
-
         }
       }
     };
 
     // Sets view value when properties change
-    scope.$watch('vm.properties', function() {
-      ngModelCtrl.$setViewValue(scope.vm.rrule);
-    }, true);
-  };
+    scope.$watch(
+      'vm.properties',
+      function() {
+        ngModelCtrl.$setViewValue(scope.vm.rrule);
+      },
+      true
+    );
+  }
 
   function acRecurrence() {
     var directive = {
@@ -68,7 +78,9 @@
       link: recurrenceLink,
       restrict: 'E',
       require: 'ngModel',
-      scope: {},
+      scope: {
+        onFrequencyChange: '&'
+      },
       templateUrl: 'ac-recurrence.html'
     };
 
